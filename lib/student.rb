@@ -67,6 +67,7 @@ class Student < InteractiveRecord
         def self.find_by(column_obj)
                 value = column_obj.values.first
                 key = column_obj.keys.first
+                binding.pry
                 sql = "SELECT * FROM #{self.table_name} WHERE #{ key } = #{ value }"
 
                 DB[:conn].execute(sql)
