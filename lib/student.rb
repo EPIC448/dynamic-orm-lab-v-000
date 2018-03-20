@@ -65,7 +65,6 @@ class Student < InteractiveRecord
         end
 
         def self.find_by(row)
-                binding.pry
                 sql = "SELECT * FROM #{self} WHERE ? = ?"
 
                 DB[:conn].execute(sql)
