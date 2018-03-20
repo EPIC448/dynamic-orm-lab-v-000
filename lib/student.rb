@@ -65,10 +65,10 @@ class Student < InteractiveRecord
         end
 
         def self.find_by(column_obj)
-                value = column_obj.values.first
                 key = column_obj.keys.first
-                binding.pry
-                sql = "SELECT * FROM #{self.table_name} WHERE #{ key } = #{ value }"
+                value = column_obj.values.first
+                sql_value = value.class == Fixnum ? value : "#{ value }"
+                sql = "SELECT * FROM #{self.table_name} WHERE #{ key } = #{ sql_value }"
 
                 DB[:conn].execute(sql)
         end
